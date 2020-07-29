@@ -4,17 +4,19 @@
 How to use:
 
 Enter the following:
-(texts to be put) (overall format)
+(texts to be put) (overall format) (file name)
 
-The space between the two is mandatory to distinguish them.
+※※The space between the two is mandatory to distinguish them.※※
 
-@ in overall format represents the place to be changed.
+@ in the overall format represents the place to be changed.
 
-Overall format can have a prefix and a suffix.
+The overall format can include a prefix and a suffix.
+
+This code saves the consequent list as .txt file with the given name.
 
 ex)
-input : 12345 0000@@a
-output: 000001a, 000002a, 000003a, ... , 000053a, 000054a, 000055a
+input : 12345 0000@@a passwordlist
+output: 000001a, 000002a, 000003a, ... , 000053a, 000054a, 000055a ==> passwordlist.txt
 
 Given the length of the texts to be put is 'i' and the length of the places to be changed(@) is 'n',
 the total number of passwords in the list is i^n.
@@ -22,7 +24,7 @@ the total number of passwords in the list is i^n.
 '''
 
 raw = input()
-data = raw.split(' ') # data[0] ==> texts to be put, data[1] ==> overall format
+data = raw.split(' ') # data[0] ==> texts to be put, data[1] ==> overall format, data[2] ==> file name
 result1 = []
 
 # 'n' represents the number of @, the places to be alternated by the given text.
@@ -56,3 +58,9 @@ for k in range(n-1) :
     change()
 
 print(globals()['result{}'.format(n)])
+
+# Create a file with the given file name, write the list, and save it.
+file = open("{}.txt".format(data[2]),"w+")
+for j in range(len(globals()['result{}'.format(n)])) :
+    file.write('{}\n'.format(globals()['result{}'.format(n)][j]))
+file.close()
