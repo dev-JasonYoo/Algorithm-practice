@@ -1,4 +1,7 @@
-from random import shuffle
+# !/usr/bin/env python3
+
+# Insertion sort algorithm
+# reference: https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/
 
 def insertsort(iterable) :
     for current in range(1,len(iterable)) : # iterable[0] is consdiered as resorted in the beginning
