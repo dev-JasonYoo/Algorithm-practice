@@ -1,31 +1,20 @@
-def is_factor(n,m): #determine whether n is a factor of m
-    if m%n == 0:
-        return True
-    else:
-        return False
+#!/usr/bin/env python
+#No.1934
+#Memory: 29452KB
+#Time: 112ms
+#Length: 370B
+
+
+def euc_lcm(a,b): #Returns LCM of 'a' and 'b' by Euclidean Algorithm
+    if a<b:
+        a,b = b,a
+    if a%b == 0 :
+        return b
+    a = a%b
+    return euc_lcm(a,b)
 
 def gcd(a,b):
-    big_int = max(a,b)
-    factor = []
-    lcm,gcd = 1,1
-    
-    while True:
-        for i in range(2,big_int+1):
-            while is_factor(i,a) and is_factor(i,b):
-                a,b = a/i,b/i
-                factor.append(i)
-            if i>=max(a,b):
-                while_break=True
-                break
-        if while_break==True or a*b == 1:
-            break
-
-    for i in range(len(factor)):
-        lcm *= factor[i]
-    
-    gcd = int(lcm*a*b)
-
-    return gcd
+    return int(a*b/euc_lcm(a,b))
 
 t = int(input())
 num = []
@@ -34,4 +23,4 @@ for i in range(t):
     num.append(list(map(int,input().split(" "))))
 
 for i in range(t):
-    print(gcd(num[i][0], num[i][1]))
+    print(gcd(num[i][0],num[i][1]))
