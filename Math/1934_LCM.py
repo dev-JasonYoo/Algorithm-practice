@@ -5,17 +5,17 @@
 #Length: 272B
 
 
-def euc_lcm(a,b): #Returns LCM of 'a' and 'b' by Euclidean Algorithm
+def euc_gcd(a,b): #Returns GCD of 'a' and 'b' by Euclidean Algorithm
     if a%b == 0 :
         return b
-    return euc_lcm(b,a%b)
+    return euc_gcd(b,a%b)
 
-def gcd(a,b):
-    return int(a*b/euc_lcm(a,b))
+def lcm(a,b):
+    return int(a*b/euc_gcd(a,b))
 
 t = int(input())
 
 while t:
     a,b=map(int,input().split(" "))
-    print(gcd(a,b))
+    print(lcm(a,b))
     t -= 1
