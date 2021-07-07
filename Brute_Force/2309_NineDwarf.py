@@ -8,18 +8,15 @@ for i in range(9):
 
 height = sorted(height)
 
-for_break = False
-for i in range(len(height)):
-    for j in range(len(height)):
-        if (sum(height) - (height[i]+height[j])) == 100:
-            one = height[i]
-            two = height[j]
-            height.remove(one)
-            height.remove(two)
-            for_break = True
-            break
-    if for_break:
-        break
+def solution():
+    sum_height = sum(height)
+    for i in range(len(height)):
+        for j in range(len(height)):
 
-for i in range(len(height)):
-    print(height[i])
+            if (sum_height - (height[i]+height[j])) == 100:
+                for k in range(len(height)):
+                    if k != i and k != j: # Don't need to edit the list. Instead, just print it out without invalid values.
+                        print(height[k])
+                return
+
+solution()
