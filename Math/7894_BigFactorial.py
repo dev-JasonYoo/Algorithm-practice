@@ -12,8 +12,7 @@ for _ in range(t):
         if n<=1:
             return fac
         fac*=n
-        n-=1
-        return factorial(n)
+        return factorial(n-1)
 
     def factorial_len(n): #function finding the number of digits of factorial of n.
         li = list(str(factorial(n))) #ex) list(str(120)): [1,2,0]
